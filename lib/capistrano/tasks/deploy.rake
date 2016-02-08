@@ -128,7 +128,7 @@ end
 desc 'Deploy a new release.'
 task :deploy do
   set(:deploying, true)
-  %w{ check build container update deploy proxy supervisor restart finished }.each do |task|
+  %w{ check build container update deploy finished }.each do |task|
     invoke "deploy:#{task}"
   end
 end

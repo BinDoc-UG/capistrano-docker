@@ -28,7 +28,7 @@ namespace :docker do
                 cmd << "-p #{port} "
             end
         end
-        fetch(:volumes).each do |name,vol|
+        fetch(:volumes, {}).each do |name,vol|
             execute "mkdir -p -m7777 #{fetch(:docker_mountpath)}/#{name}"
             cmd << "-v `pwd`/#{fetch(:docker_mountpath)}/#{name}:#{vol}:rw "
         end
