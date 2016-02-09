@@ -50,7 +50,7 @@ namespace :deploy do
             commit = capture "git rev-parse HEAD"
             execute "cd tmp/build/ && git fetch && git checkout -f #{commit}"
 
-            fetch(:build_commands).each do |command|
+            fetch(:build_commands, []).each do |command|
                 execute "cd tmp/build && "+command       
             end
             
